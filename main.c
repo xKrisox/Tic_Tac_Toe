@@ -6,7 +6,7 @@ int main()
 {
     int player = 1;
     int choice, i;
-    char mark; //X or o
+    char mark; //X or O
     
     do {
         showboard();
@@ -45,7 +45,7 @@ int main()
 
     showboard();
     if (i == 1){
-        printf("Player %d has won!\n", --player);
+        printf("Player %d has won!\n", (mark == 'X') ? 1 : 2);
     }
     else {
         printf("It's a draw!\n");
