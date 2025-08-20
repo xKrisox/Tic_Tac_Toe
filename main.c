@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 char arr[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 void showboard()
@@ -40,13 +41,11 @@ int main()
     
     do {
         showboard();
-        if player % 2 == 0) {
-            player = 2;
-            mark = 'O'; // Player 2
-        } else {
-            player = 1;
-            mark = 'X'; // Player 1
-        }
+        player = (player % 2) ? 1 : 2; // Switch player
+        printf("Player %d turn :", player);
+        scanf("%d", &choice);
+        mark = (player == 1) ? 'X' : 'O'; // Assign mark
+
         if (choice == 1 && arr[1] == '1'){
             arr[1] = mark;
         } else if (choice == 2 && arr[2] == '2') {
@@ -68,10 +67,22 @@ int main()
         } else {
             printf("Invalid move\n");
             player--;
+            getchar();
         }
         
         i = checkForWin();
         player++;
     } while (i == -1);
+
+    showboard();
+    if (i == 1){
+        printf("Player %d has won!\n", --player);
+    }
+    else {
+        printf("It's a draw!\n");
+    }
+    getchar();
+    printf("Thanks for playing!\n");
+
     return 0;
 }
